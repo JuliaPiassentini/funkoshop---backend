@@ -1,0 +1,497 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,200;1,300;1,400;1,500;1,600&display=swap');
+
+:root {
+    /*Paleta de colores,variables para reutilizar valores y no repetir,modifico valores desde aquí y lo hará en los selectores atribuidos con dichas variables*/
+    --primary-solid: #FF3333;
+    --primary-900: #ff3333e6;
+    /*Indico el mismo color con  90%de trnsparencia */
+    --primary-500: rgba(255, 51, 51, 0.5);
+    /*50%transparencia*/
+    --primary-300: rgba(255, 51, 51, 0.3);
+
+    --secondary-solid: #1D84B5;
+    --secondary-900: rgba(29, 132, 181, 0.9);
+    --secondary-500: rgba(29, 132, 181, 0.5);
+    --secondary-300: rgba(29, 132, 181, 0.3);
+
+    --dark-solid: #1F1F1F;
+    --dark-900: rgb(31, 31, 31, 0.9);
+    --dark-500: rgb(31, 31, 31, 0.5);
+    --dark-300: rgb(31, 31, 31, 0.3);
+
+    --dark-bg-solid: #30343F;
+    /*Utilizado en background oscuros*/
+    --light-bg-solid: #FAFAFF;
+    /*Utilizaos en backgrounds*/
+    --light-font-solid: #FFFFFF;
+
+    /*Tipography*/
+    --base-font: 'Inter', Sans-serif;
+    --alternative-font: 'Raleway', sans-serif;
+
+    /*Font-size*/
+    --font-display: 4.6em;
+    /*Ya que jaqueamos el valor de 1em a 10px y no el determonado que es 16px*/
+    --font-jumbo: 3.8em;
+    --font-xlarge: 3em;
+    --font-large: 2.4em;
+    --font-medium: 1.8em;
+    --font-small: 1.6em;
+    --font-xsmall: 1.4em;
+
+    /*Spacings*/
+    --spacing-128: 12.8rem;
+    --spacing-68: 6.8rem;
+    --spacing-36: 3.6rem;
+    --spacing-28: 2.8rem;
+    --spacing-24: 2.4rem;
+    --spacing-20: 2rem;
+    --spacing-16: 1.6rem;
+    --spacing-12: 1.2rem;
+    --spacing-8: 0.8rem;
+
+}
+
+*,
+* ::before,
+/*Agregamos estas pseudoclases xq si las llegamos a utilizar tambien queremos normalizar esos estilos*/
+* ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Al contrario de content-box si le aplico margen o pading extra el contenido se achica y aapta hacia dentro y no aumenta el tamaño de la cajita*/
+}
+
+html {
+    font-family: var(--base-font);
+    /*html le hereda esta familia tipografica a todos klos elementos del sitio excepto  a footer y header q tienen la propia*/
+    font-size: 62.5%;
+    /*62.5=10px=1em Normalizamos a 10px el estandar del navegador,Con esto le decimos al navegador que en lugar del estandar sea 16px quede en 10px pero en porcentaje para no complicar, 16px =1em buena practica usar em para textos y rem*/
+    color: var(--dark-solid);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    /*Le indicamos con esto que tome el color que viene heredado de la etiqueta html y no del azul que que le establece el navegador*/
+    font-family: inherit;
+    /*Para que los enlces que estan dentro de un header o footer tengan fuente Raleway y los que estan fuera tengan fuente Inter, los enlaces heredan de sus etiquetas padres el tipo de fuente*/
+}
+
+header,
+footer {
+    font-family: var(--alternative-font);
+    color: var(--light-font-solid);
+}
+
+ul,
+ol {
+    list-style-type: none;
+}
+
+p {
+    font-size: 1.8em;
+    /*1.8em=18px*/
+}
+
+img {
+    width: 100%;
+    /*asi Siempre tendra el 100%del ancho de su contenedor padre que es picture*/
+}
+
+.container {
+    /*Esto hará que el contenido quede centrado y con un ancho fijo y los elementos en una misma linea vertical*/
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*HEADER*/
+
+header {
+    background-color: var(--dark-bg-solid);
+    padding: var(--spacing-36);
+    margin-bottom: var(--spacing-68);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar__logo {
+    max-width: 300px;
+
+}
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-20);
+
+}
+
+.navbar__link {
+    font-size: var(--font-medium);
+    padding: var(--spacing-8) var(--spacing-16);
+    display: inline-block;
+    transition: background .3s ease-in-out;
+    position: relative;
+    /*Padre del submenú al cual le asignamos position absolute*/
+}
+
+.navbar__link:hover {
+    background-color: var(--primary-900);
+
+}
+
+.with-icon {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-8);
+}
+
+.with-submenu:hover .submenu {
+    display: block;
+}
+
+.submenu {
+    display: none;
+    width: 300px;
+    position: absolute;
+    /*Para sacarlo del flujo de la página*/
+    background-color: var(--dark-bg-solid);
+    z-index: 3;
+    /*uno más que la capa content que se encuentra por encima de la capa :before */
+}
+
+.submenu__link {
+    display: block;
+    /*Ya que los enlaces son elementos en linea*/
+    padding: var(--spacing-8) var(--spacing-16);
+    font-size: var(--font-medium);
+    transition: background .3s ease-in-out;
+}
+
+.submenu__link:hover {
+    background-color: var(--primary-900);
+}
+
+.navbar__cart_tag {
+    position: absolute;
+    right: 0;
+}
+
+.navbar__cart_cover {
+    display: flex;
+    position: relative;
+}
+
+/*Main-Detalle de los productos del carrito*/
+.carrito__title {
+    font-family: var(--alternative-font);
+    font-weight: 700;
+    font-size: var(--font-display);
+    text-transform: uppercase;
+    text-decoration: underline 5px var(--primary-solid);
+}
+
+.carrito {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: var(--light-bg-solid);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr 0.1fr;
+    margin-top: var(--spacing-28);
+    margin-bottom: var(--spacing-28);
+}
+
+.carrito__title__columnas {
+    color: var(--dark-solid);
+    font-size: var(--font-small);
+    font-family: var(--base-font);
+    font-weight: 700;
+    text-align: center;
+    margin-top: var(--spacing-12);
+    margin-bottom: var(--spacing-12);
+}
+
+.cart-item {
+    width: 100%;
+    height: 100%;
+    background: var(--light-bg-solid);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.cart_yoda {
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--spacing-20);
+    display: flex;
+}
+
+
+.contenedor_descripcion {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--spacing-20);
+    display: inline-flex;
+}
+
+.contenedor_producto {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--spacing-8);
+    display: flex;
+}
+
+.titulo_yoda {
+    color: var(--dark-solid);
+    font-size: var(--font-large);
+    font-family: var(--base-font);
+    font-weight: 700;
+}
+
+.starwars_yoda {
+    color:var(--dark-bg-solid);
+    font-size: var(--font-xsmall);
+    font-family: var(--base-font);
+    font-weight: 500;
+}
+
+.precio_yoda {
+    color:var(--dark-bg-solid);
+    font-size: var(--font-xsmall);
+    font-family: var(--base-font);
+    font-weight: 400;
+}
+
+.contenedorcant {
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--spacing-8);
+    display: inline-flex;
+}
+
+.contenedorrec {
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    display: flex;
+}
+
+.rectangulo {
+    height: 40px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    background: var(--light-font-solid);
+    border: 0.50px #C9C9C9 solid;
+}
+
+.grupo {
+    width: 89.48px;
+    height: 40px;
+    position: relative;
+}
+
+.numero {
+    left: 40.84px;
+    top: 8px;
+    position: absolute;
+    color: var(--dark-solid);
+    font-size: var(--font-medium);
+    font-family: var(--base-font);
+    font-weight: 700;
+}
+
+.contenedorbtn {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+    display: inline-flex;
+}
+
+.btni {
+    width: 18px;
+    height: 16px;
+    padding: 4px;
+    background: #F24E1E;
+    justify-content: space-between;
+    align-items: center;
+    display: inline-flex;
+}
+
+.btnd {
+    width: 18px;
+    height: 16px;
+    padding: 4px;
+    background: #F24E1E;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+}
+
+.contenedor_precio {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-8);
+    display: inline-flex;
+}
+
+.precio {
+    color: var(--dark-solid);
+    font-size:large;
+    font-family: var(--base-font);
+    font-weight: 400;
+}
+
+.close {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-8);
+    display: inline-flex;
+}
+
+
+/*Resumen de productos del carrito*/
+
+.resumen {
+    font-family: var(--alternative-font);
+    font-weight: 700;
+    font-size: var(--font-display);
+    text-transform: uppercase;
+    text-decoration: underline 5px var(--primary-solid);
+    padding: var(--spacing-20);
+    position: relative;
+    left: 80%;
+}
+
+.resumen__content {
+    position: relative;
+    left: 50%;
+    margin-bottom: 50px;
+}
+
+.contenedor_tarjeta{
+    width: 50%; 
+    height: 100%; 
+    padding: 24px; 
+    background: #FAFAFF; 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25); 
+    border-radius: 10px; 
+    overflow: hidden; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 20px; 
+    display: inline-flex;
+}
+
+.contenedor_datos{
+    width: 524px; 
+    justify-content: space-between; 
+    align-items: center; 
+    display: inline-flex;  
+}
+
+.cantidad_elementos_text{
+    color: black; 
+    font-size: 16px; 
+    font-family: Inter; 
+    font-weight: 600; 
+    word-wrap: break-word;
+}
+
+.dato{
+    color: #747474; 
+    font-size: 16px; 
+    font-family: Inter; 
+    font-weight: 700; 
+    word-wrap: break-word;
+}
+
+.subtotal_text{
+    color: black; 
+    font-size: 16px; 
+    font-family: Inter; 
+    font-weight: 600; 
+    word-wrap: break-word;
+}
+
+.envio_text{
+    color: black; 
+    font-size: 16px; 
+    font-family: Inter; 
+    font-weight: 600; 
+    word-wrap: break-word;
+}
+
+.contenedor_datos_total{
+    width: 524px; 
+    padding-top: 8px; 
+    border-top: 2px #FF3333 solid; 
+    justify-content: space-between; 
+    align-items: center; 
+    display: inline-flex;
+}
+
+.total_text{
+    color: black; 
+    font-size: 20px; 
+    font-family: Inter; 
+    font-weight: 700; 
+    word-wrap: break-word;
+}
+
+.dato_total{
+    color: #747474; 
+    font-size: 20px; 
+    font-family: Inter; 
+    font-weight: 700; 
+    word-wrap: break-word;
+}
+
+.btn_pagar {
+   
+    font-size:var(--font-xlarge);
+    background-color: var(--primary-solid);
+    color: var(--light-font-solid);
+    padding: var(--spacing-16) 21.3rem;
+    font-weight: 700;
+    position: relative;
+    left: 50%;
+    margin-bottom: var(--spacing-128);
+    }
+
+
+
+/*Footer*/
+.footer {
+    background-color: var(--dark-bg-solid);
+    padding: var(--spacing-68);
+}
+
+.footer__copy {
+    margin-top: var(--spacing-36);
+    text-align: center;
+}
