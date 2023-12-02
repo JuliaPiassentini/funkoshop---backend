@@ -303,10 +303,10 @@ header {
   text-transform: uppercase;
 }
 
-/*.slider__items {
+.slider__items {
   display: flex;
   gap: var(--spacing-24);
-}*/
+}
 
 iconify-icon {
   color: var(--dark-bg-solid);
