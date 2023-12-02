@@ -10,10 +10,10 @@ const authRoutes =require('./src/routes/authRoutes.js');
 /*==CONFIGURAMOS EL SERVER== */
 /*Configuramos una ruta que devuelve cierta respuesta */
 const PORT = 4000;
-
+/*Middleware para determinar carpeta de archivos estáticos*/
 app.use(express.static('public'));
 
-
+/*Middlewares para que ante cada petición mi servidor revise estos archivos de rutas*/
 app.use('/', mainRoutes);
 app.use('/shop', shopRoutes);
 app.use('/admin', adminRoutes);

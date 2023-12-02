@@ -1,11 +1,13 @@
-const express = require('express');
+const express = require("express");
 
 /*Solicito de express un método para la creación de rutas en diferentes archivos*/
 const router = express.Router();
+/*Importo controladores */
+const controller = require("../controllers/mainControllers");
 
-router.get('/home',(req,res)=>res.send('Ruta para la vista de Home'));
-router.get('/contact',(req,res)=>res.send('Ruta para la vista de Contacto'));
-router.get('/about',(req,res)=>res.send('Ruta para la vista de About'));
-router.get('/faqs',(req,res)=>res.send('Ruta para la vista de Faqs'));
+router.get("/home", controller.home);
+router.get("/contact", controller.contact);
+router.get("/about", controller.about);
+router.get("/faqs", controller.faqs);
 
 module.exports = router;

@@ -1,12 +1,13 @@
 const express = require('express');
 
 const router = express.Router();
+const controller = require('../controllers/shopControllers');
 
 
-router.get('/',(req,res)=>res.send('Ruta para la vista de Shop'));
-router.get('/item/:id',(req,res)=>res.send('Ruta para la vista del Item seleccionado'));
-router.post('/item/:id/add',(req,res)=>res.send('Ruta para agregar el item seleccionado al carrito'));
-router.get('/cart',(req,res)=>res.send('Ruta para la vista del Carrito con sus elementos cargados'));
-router.post('/cart',(req,res)=>res.send('Ruta para cargar todos los datos del carrito a base de datos'));
+router.get('/',controller.shop);
+router.get('/item/:id',controller.shopItem);
+router.post('/item/:id/add',controller.agregarItemCarrito);
+router.get('/cart',controller.vistaCarrito);
+router.post('/cart',controller.datosCarritoEnviar);
 
 module.exports = router;
