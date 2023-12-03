@@ -5,6 +5,7 @@ const router = express.Router();
 /*Importo controladores */
 const controller = require("../controllers/mainControllers");
 
+router.get("/", controller.home);
 router.get("/home", controller.home);
 router.get("/contact", controller.contact);
 router.get("/about", controller.about);
