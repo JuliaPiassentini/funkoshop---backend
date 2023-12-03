@@ -2,7 +2,8 @@ const express = require('express');/*Requerimos una instancia express con su cod
 const app = express();/*Instacia express ejecutada que monta un server */
 const path = require ('path');
 const methodOverride = require('method-override');
-
+const dotEnv =require('dotenv');
+dotEnv.config();
 
 /*Importamos archivos de rutas*/
 const mainRoutes =require('./src/routes/mainRoutes.js');
@@ -14,7 +15,7 @@ const authRoutes =require('./src/routes/authRoutes.js');
 /*==CONFIGURAMOS EL SERVER== */
 
 /*En caso de que no exista una variable de entorno llamada PORT le asigna el valor 4000 */
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 /*Configuramos el motor de plantillas*/
 app.set('view engine', 'ejs');
 /*Configuramos la ruta de vistas,indicamos al server donde ir a buscar las vistas*/
