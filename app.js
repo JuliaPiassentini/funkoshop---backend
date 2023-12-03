@@ -1,6 +1,7 @@
 const express = require('express');/*Requerimos una instancia express con su codigo que facilita creacion de servers */
 const app = express();/*Instacia express ejecutada que monta un server */
 const path = require ('path');
+const methodOverride = require('method-override');
 
 
 /*Importamos archivos de rutas*/
@@ -21,6 +22,10 @@ app.set('views', path.join(__dirname, './src/views'));
 
 /*Middleware para determinar carpeta de archivos estáticos*/
 app.use(express.static('public'));
+/*Middleware para parsear los datos que vienen del front */
+app.use(express.urlencoded());
+app.use(express.json());
+app.use(methodOverride('_method'));
 
 /*Middlewares para que ante cada petición mi servidor revise estos archivos de rutas que tienen asociados controladores con ciertas respuestas*/
 app.use('/', mainRoutes);
@@ -28,7 +33,10 @@ app.use('/shop', shopRoutes);
 app.use('/admin', adminRoutes);
 app.use('/auth', authRoutes);
 
-
+/*Middleware si la petición no coincide con ninguna ruta*/
+app.use((req,res)=>{
+    res.status(404).send('La página que buscas no existe');
+});
 
 
 app.listen(PORT,()=>console.log(`Servidor corriendo en http://localhost:${PORT}`));/*Configuramos un puerto al que el server escuche y al momento de iniciarse le definimos que envíe un mje por consola,para probar si funciona ejecutar comando en terminal node app.js */

@@ -8,31 +8,9 @@
     <link rel="icon" href="../../img/branding/favicon.png">
   </head>
   <body>
-    <header>
-      <!--   Inicio Header   -->
-      <nav class="navbar container">
-        <picture class="navbar__logo">
-          <a href="../../index.html">
-            <img
-              src="../../img/branding/logo_light_horizontal.svg"
-              alt="Isologotipo de la Marca Funkoshop"
-            />
-          </a>
-        </picture>
-        <ul class="navbar__menu">
-          <li class="navbar__item">
-            <a class="navbar__link" href="../shop/shop.html">VER TIENDA</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="admin.html">ADMIN</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="../admin/login.html">SALIR</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <!--   Fin Header   -->
+     <!--   Inicio Header   -->
+     <%- include('../partials/headerAdmin') %>
+     <!--Fin Header-->
 
     <body>
       <div class="form-group__create">
@@ -173,34 +151,7 @@
    
   
     <!--Inicio Footer-->
-    <footer class="footer">
-      <nav class="navbar container">
-        <ul class="navbar__item">
-          <li class="navbar__item">
-            <a class="navbar__link" href="../shop/shop.html">SHOP</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="../admin/register.html"
-              >REGISTRARSE</a
-            >
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="login.html">INGRESAR</a>
-          </li>
-          <li class="navbar__item">
-            <a class="navbar__link" href="./register.html">CONTACTO</a>
-          </li>
-        </ul>
-        <picture>
-          <img
-            src="../../img/branding/isotype.svg"
-            alt="Isotipo de la marca Funkoshop"
-          />
-        </picture>
-      </nav>
-
-      <p class="footer__copy">All rights reserved 2023 - Funkoshop &copy;</p>
-    </footer>
+    <%- include('../partials/footerAdmin') %>
 
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
   </body>
