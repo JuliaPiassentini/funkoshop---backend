@@ -1,9 +1,16 @@
 const path = require ('path');
+const fs = require('fs');
 
 /*Exportamos un objeto,con los controladores de cada ruta*/
 module.exports ={
     shop:(req,res)=>{
-        res.render(path.resolve(__dirname, '../views/shop/shop'))
+        const datos =  fs.readFileSync(path.resolve(__dirname, '../data/items.json'));
+        const items = JSON.parse(datos);
+        /*console.log(items)*/
+        res.render(path.resolve(__dirname, '../views/shop/shop'),{
+            title: 'Funkoshop Shop',
+            items
+        })
     },
     shopItem:(req,res)=>{
         res.render(path.resolve(__dirname, '../views/shop/item'))
