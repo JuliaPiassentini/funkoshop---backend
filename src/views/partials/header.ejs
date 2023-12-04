@@ -1,12 +1,12 @@
 
-
+<% if(view === 'home') { %>
 <header>
   <nav class="navbar container">
     <picture class="navbar__logo"
       ><!--Etiqueta que le da más semantica al archivo no es estrictamente necesaria-->
       <a href="./index.html">
         <img
-          src="./img/branding/logo_light_horizontal.svg"
+          src="../../img/branding/logo_light_horizontal.svg"
           alt="Isologotipo de la Marca Funkoshop"
         />
       </a>
@@ -36,9 +36,37 @@
       </li>
       <li class="navbar__item">
         <a class="navbar__cart" href="./pages/shop/carrito.html">
-          <img src="./img/icons/cart-icon.svg" alt="icono de carrito" />
+          <img src="../../img/icons/cart-icon.svg" alt="icono de carrito" />
         </a>
       </li>
     </ul>
   </nav>
 </header>
+<%} else {%>
+
+  <header>
+    <nav class="navbar container">
+        <picture class="navbar__logo">
+          <a href="../../index.html">
+            <img
+              src="../../img/branding/logo_light_horizontal.svg"
+              alt="Isologotipo de la Marca Funkoshop"
+            />
+          </a>
+        </picture>
+        <ul class="navbar__menu">
+          <li class="navbar__item">
+            <a class="navbar__link" href="../shop/shop.html">VER TIENDA</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="../admin/admin.html">ADMIN</a>
+          </li>
+          <li class="navbar__item">
+            <a class="navbar__link" href="login.html">SALIR</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+
+  <% } %>

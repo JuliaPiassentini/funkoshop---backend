@@ -2,7 +2,8 @@
 module.exports = {
   home: (req, res) => {
     res.render("index",{
-        title:'Home Funkoshop'
+        title:'Home Funkoshop',
+        view :'home'
     });
   },
   contact: (req, res) => res.send("Ruta para la vista de Contacto"),

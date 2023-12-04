@@ -303,10 +303,13 @@ header {
   text-transform: uppercase;
 }
 
-.slider__items {
+/*.slider__items {
   display: flex;
   gap: var(--spacing-24);
-}
+  
+}*/
+
+
 
 iconify-icon {
   color: var(--dark-bg-solid);
@@ -321,6 +324,7 @@ iconify-icon {
 .glide__arrow--right {
   right: 0;
 }
+
 
 .card-item__cover {
   display: flex;
