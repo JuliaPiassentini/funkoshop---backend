@@ -13,7 +13,8 @@
 
     <!--   Fin Header   -->
     <!-- Aside -->
-    <div class="contenedor container">
+    
+    <div class="container container__shop">
       <aside class="sidebar">
         <div>
           <div class="sidebar__buscar">
@@ -48,10 +49,9 @@
               placeholder="0"
             />
           </div>
-          <p>FILTRAR</p>
-          <div class="sidebar__filtrar">
-            <!-- <label for="filtrar">FILTRAR</label> -->
-            <ul class="sidebar__filtrar__lista">
+          <div class="sidebar__filtrar__contenedor">
+            <p>FILTRAR</p>       
+            <ul class="sidebar__filtrar">
               <li>
                 <input type="checkbox" name="filtrar" />
                 <label for="nuevos">NUEVOS</label>
@@ -70,14 +70,16 @@
               </li>
             </ul>
           </div>
+          
+          
         </div>
       </aside>
       <!-- Main -->
       <main>
-        <section class="slider container">
-          <ul class="slider__items">
+        <section class="container__shop__cards">
+      
             <% items.forEach( item => { %>
-            <li class="slider__item">
+            
               <article class="card-item">
                 <a class="card-item__link" href="">
                   <picture class="card-item__cover">
@@ -95,7 +97,7 @@
                   </picture>
                   <div class="card-item__content">
                     <p class="card-item__licence"><%= item.licence_name %></p>
-                    <h4 class="card-item__name"><%= item.product_name %></h4>
+                    <p class="card-item__name"><%= item.product_name %></p>
                     <p class="card-item__price">$ <%= item.product_price %></p>
                     <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
                   </div>
@@ -103,9 +105,9 @@
               </article>
             </li>
             <% }); %>
-          </ul>
+        
         </section>
-
+      
         <section class="paginacion">
           <ul class="paginacion__lista">
             <li class="paginacion__lista__boton"><a href=""><</a></li>

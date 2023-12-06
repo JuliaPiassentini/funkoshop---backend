@@ -325,6 +325,14 @@ iconify-icon {
   right: 0;
 }
 
+.card-item{
+  width: 300px;
+  height: 512px;
+  margin-top: var(--spacing-68);
+  padding-left: 10px;
+  padding-top: var(--spacing-20);
+}
+
 
 .card-item__cover {
   display: flex;
@@ -388,36 +396,38 @@ iconify-icon {
   font-weight: 700;
 }
 
-/* Aside Main */
-
-.contenedor {
+/* SHOP */
+.container__shop{
   display: flex;
-  flex-wrap: wrap;
-
-}
-
-aside {
-  flex: 25%;
-}
-
-main {
-  flex: 75%;
+  gap: 30px;
 }
 
 /* Aside */
 
 .sidebar {
-  margin: var(--spacing-68) auto;
+  margin: var(--spacing-68) 8px;
+  margin-left: 0px;
   padding: var(--spacing-20);
+  padding-left: 0px;
+  width: 24rem;
+  height: 43rem;
 
 }
 
+.sidebar label{
+  font-weight: 500;
+}
+
+.sidebar p{
+  font-weight: 500;
+}
 
 .sidebar__buscar {
   display: flex;
   flex-direction: column;
   font-size: var(--font-medium);
   padding: var(--spacing-8);
+  margin-bottom: 5px;
 }
 
 .sidebar__ordenar {
@@ -425,6 +435,7 @@ main {
   flex-direction: column;
   font-size: var(--font-medium);
   padding: var(--spacing-8);
+  margin-bottom: 8px;
 }
 
 .sidebar__precio {
@@ -436,6 +447,13 @@ main {
   font-size: var(--font-xsmall);
 
 }
+.sidebar__filtrar__contenedor{
+  margin-top: 10px;
+}
+
+.sidebar__filtrar__contenedor p{
+  padding-bottom: 0px;
+}
 
 .sidebar__filtrar {
   display: flex;
@@ -443,6 +461,8 @@ main {
   justify-content: center;
   font-size: var(--font-xsmall);
   padding: var(--spacing-16);
+  gap:5px;
+  margin-top:0px;
 
 }
 
@@ -468,6 +488,12 @@ p {
   height: var(--spacing-24);
   border-radius: 6px;
   text-align: center;
+}
+
+.container__shop__cards{
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
 }
 
 /*MEDIA QUERY DISPOSITIVOS PEQUENOS SHOP*/
