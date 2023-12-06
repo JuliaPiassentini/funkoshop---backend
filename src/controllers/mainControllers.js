@@ -1,9 +1,9 @@
 /*Exportamos un objeto,con los controladores de cada ruta*/
 module.exports = {
   home: (req, res) => {
-    res.render("index",{
-        title:'Home Funkoshop',
-        view :'home'
+    res.render("index", {
+      title: "Home Funkoshop",
+      view: "home",
     });
   },
   contact: (req, res) => res.send("Ruta para la vista de Contacto"),
