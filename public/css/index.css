@@ -1001,7 +1001,6 @@ tbody td:first-child {
   /* height: 60vh;*/
   display: flex;
   justify-content: center;
-  align-items: center;
   min-height: 55vh;
   padding-bottom: 30px;
 }
@@ -1010,19 +1009,76 @@ form {
   height: 100%;
 }
 
+
 .form__container h2 {
   font-family: var(--alternative-font);
   font-size: 4.2em;
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 20px;
+  justify-content: center;
+}
+
+.form__containerRegistro{
+  display: flex;
+  justify-content: center;
+  padding-left: 50px;
+}
+
+.form__containerRegistro h2 {
+  font-family: var(--alternative-font);
+  font-size: 4.2em;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  justify-content: center;
+  margin-left: 300px;
+}
+
+.p_register {
+  font-size: 32px;
+  font-weight:500 ;
+  font-family:var(--alternative-font) ;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+.form__container__register{
+ margin-top: 20px;
+ width: 70%;
+ margin-left: 180px;
+ margin-bottom: 20px;
+ 
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: start;
 
+}
+
+.input_reg{
+  font-family: var(--base-font);
+  font-size: var(--font-large);
+  font-weight: 400;
+  border-bottom: #ff3333;
+  width: 70%;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 40px;
+  margin-bottom: 0;
+  display: flex;
+  justify-content:space-between;
+  align-items: baseline;
+  gap: 25px;
+}
+
+.input_reg label{
+  margin-right: 0px;
+}
+
+.input_reg input{
+  margin-left: 0px;
 }
 
 .input_log {
@@ -1049,11 +1105,21 @@ form {
   font-weight: 400;
 }
 
+.input_reg [placeholder] {
+  font-family: var(--base-font);
+  font-size: 16px;
+  font-weight: 400;
+}
+
 .input_log input {
   border: none;
   border-bottom: 2px solid #ff3333;
 }
 
+.input_reg input {
+  border: none;
+  border-bottom: 2px solid #ff3333;
+}
 .pass input {
   margin-left: -25px;
 }
@@ -1087,6 +1153,10 @@ form {
 
 }
 
+.form_pass_reg a{
+  color: #1D84B5;
+  font-size: 14px;
+}
 .mycheck {
   width: 20px;
   margin-right: 6px;
