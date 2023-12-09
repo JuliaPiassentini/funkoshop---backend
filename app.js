@@ -23,7 +23,7 @@ app.set("views", path.join(__dirname, "./src/views"));
 /*Middleware para determinar carpeta de archivos estáticos*/
 app.use(express.static("public"));
 /*Middleware para parsear los datos que vienen del front */
-app.use(express.urlencoded());
+app.use(express.urlencoded());/*Parsea los datos recibidos por POST */
 app.use(express.json());
 app.use(methodOverride("_method"));
 
