@@ -1,11 +1,12 @@
 const mysql = require('mysql2');
+require('dotenv').config();
 
 /*Crea el pool de conexiones y los objetos de configuración basicos que necesita el pool para funcionar*/
 const pool = mysql.createPool({
-    host:"localhost",
-    user:"root",
-    password:"admin1988",
-    database:"funkos_db",
+    host:process.env.DB_HOST,
+    user:process.env.DB_USER,
+    password:process.env.DB_PASS,
+    database:process.env.DB_NAME,
     port:3306,
     waitForConnections:"true",
     connectionsLimit:10,
@@ -16,7 +17,7 @@ const pool = mysql.createPool({
 /*TEST de conexión a la DB y posterior liberación de la conexión si quiero cerrarla connection.end */
 pool.getConnection((error,connection)=>{
     if(error){
-        console.log('Hubo un error de conexión:', error);
+        console.log('Hubo un error de conexión:', error);//Si hubo un error con al conexión lo lee y me lo pasa por consola,no olvidar abrir nueva terminal con node...ruta hacia el archivo ./src/config/conn.js
     }else{
         console.log('Conexión a la base de datos exitosa!');
         connection.release();
