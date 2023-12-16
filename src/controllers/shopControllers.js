@@ -1,24 +1,43 @@
 const path = require("path");
 const fs = require("fs");
-
+const { getAllItems, getOneItem } = require("../services/itemsServices");
 /*Exportamos un objeto,con los controladores de cada ruta*/
 module.exports = {
-  shop: (req, res) => {
-    const datos = fs.readFileSync(
-      path.resolve(__dirname, "../data/items.json")
-    );
-    const items = JSON.parse(datos);
-    /*console.log(items)*/
+  shop: async (req, res) => {
+    let items = await getAllItems();
+
+    if (items.isError) {
+      items = "Ups...hubo un error para obtener los datos, sigue navegando ";
+    }
+
     res.render(path.resolve(__dirname, "../views/shop/shop"), {
       title: "Funkoshop Shop",
       view: "home",
       items,
     });
   },
-  shopItem: (req, res) => {
+
+  /* shop: (req, res) => {
+        /*const datos = fs.readFileSync(
+      path.resolve(__dirname, "../data/items.json")
+    );
+    const items = JSON.parse(datos);
+    /*console.log(items)*/
+  /*res.render(path.resolve(__dirname, "../views/shop/shop"), {
+      title: "Funkoshop Shop",
+      view: "home",
+      items,
+    });
+  },*/
+  shopItem: async (req, res) => {
+    const id = req.params.id;/*Si en la ruta determinase item/:item aca sería req.params.item */
+    const item = await getOneItem(id);
+    console.log(item);
+
     res.render(path.resolve(__dirname, "../views/shop/item"), {
       title: "Funkoshop Colecciones",
       view: "home",
+      item,
     });
   },
   agregarItemCarrito: (req, res) =>

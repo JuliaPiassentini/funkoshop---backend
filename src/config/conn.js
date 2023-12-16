@@ -7,7 +7,7 @@ const pool = mysql.createPool({
     user:process.env.DB_USER,
     password:process.env.DB_PASS,
     database:process.env.DB_NAME,
-    port:3306,
+    port:3306,//puerto del server base de datos
     waitForConnections:"true",
     connectionsLimit:10,
     queueLimit:0
@@ -24,7 +24,7 @@ pool.getConnection((error,connection)=>{
 
     }
 });
-//Exportamos la conexión como una promesa
+//Exportamos la conexión como una promesa para poder hacer peticiones asíncronas
 module.exports ={
     conn: pool.promise()
 };
