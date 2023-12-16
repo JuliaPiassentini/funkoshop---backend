@@ -1,4 +1,4 @@
-const { getAll,getOne } = require('../models/items');
+const { getAll,getOne,getItemsSameLicence } = require('../models/items');
 
 const getAllItems = async (params) =>{
     const result = await getAll();
@@ -8,16 +8,16 @@ const getOneItem = async (id) =>{
     const result = await getOne({product_id : id});
     return result;
 };
-/*const getAllItemsRel= async (id) =>{
-    const result = await getAll({licence_id : id});
+const getAllItemsRel= async (idLicence) =>{
+    const result = await getItemsSameLicence({licence_id : idLicence});
     return result;
-};*/
+};
 
 
 
 module.exports = {
     getAllItems,
     getOneItem,
-    
+    getAllItemsRel,
     
 }

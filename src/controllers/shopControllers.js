@@ -1,6 +1,11 @@
 const path = require("path");
 const fs = require("fs");
-const { getAllItems, getOneItem } = require("../services/itemsServices");
+const {
+  getAllItems,
+  getOneItem,
+  getAllItemsRel,
+} = require("../services/itemsServices");
+
 /*Exportamos un objeto,con los controladores de cada ruta*/
 module.exports = {
   shop: async (req, res) => {
@@ -28,16 +33,21 @@ module.exports = {
       items,
     });
   },*/
+
   shopItem: async (req, res) => {
-    const id =
-      req.params
-        .id; /*Si en la ruta determinase item/:item aca sería req.params.item */
-    const item = await getOneItem(id);
+    const { id } =
+      req.params; /*Si en la ruta determinase item/:item aca sería req.params.item */
+    const [item] = await getOneItem(id);
+    const idLicence = item.licence_id;
+    const productsRel = await getAllItemsRel(idLicence);
+    /*console.log(idLicence)
+    console.log(productsRel);*/
 
     res.render(path.resolve(__dirname, "../views/shop/item"), {
       title: "Funkoshop Colecciones",
       view: "home",
       item,
+      productsRel,
     });
   },
   agregarItemCarrito: (req, res) =>
