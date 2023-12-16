@@ -1,11 +1,16 @@
 const path = require("path");
-
+const { getAllItems, getOneItem } = require("../services/itemsServices");
 /*Creo y exporto controladores*/
 module.exports = {
-  admin: (req, res) => {
+  admin: async (req, res) => {
+
+    const data = await getAllItems();
+
+
     res.render(path.resolve(__dirname, "../views/admin/admin"), {
       title: "Funkoshop Admin",
       view: "admin",
+      data
     });
   },
   createItemView: (req, res) => {
@@ -14,11 +19,23 @@ module.exports = {
       view: "admin",
     });
   },
-  createItem: (req, res) => res.send("Ruta para agregar un nuevo Item"),
-  editItemView: (req, res) => {
+  createItem: async (req, res) =>{
+    const item= req.body
+    await itemsServices.create(item);
+    res.redirect('/admin');
+  },
+  
+  
+  
+  editItemView: async(req, res) => {
+
+  const {id} = req.params;
+  const [product] = await getOneItem(id);
+
     res.render(path.resolve(__dirname, "../views/admin/edit"), {
       title: "Funkoshop Editar tienda",
       view: "admin",
+      product,
     });
   },
   editItem: (req, res) => res.send("Ruta para modificar un  Item específico"),

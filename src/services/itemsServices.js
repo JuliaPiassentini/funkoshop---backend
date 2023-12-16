@@ -8,15 +8,16 @@ const getOneItem = async (id) =>{
     const result = await getOne({product_id : id});
     return result;
 };
-const getAllItemsRel= async (id) =>{
+/*const getAllItemsRel= async (id) =>{
     const result = await getAll({licence_id : id});
     return result;
-};
+};*/
+
 
 
 module.exports = {
     getAllItems,
     getOneItem,
-    getAllItemsRel,
+    
     
 }

@@ -16,7 +16,6 @@ module.exports = {
       items,
     });
   },
-
   /* shop: (req, res) => {
         /*const datos = fs.readFileSync(
       path.resolve(__dirname, "../data/items.json")
@@ -30,9 +29,10 @@ module.exports = {
     });
   },*/
   shopItem: async (req, res) => {
-    const id = req.params.id;/*Si en la ruta determinase item/:item aca sería req.params.item */
+    const id =
+      req.params
+        .id; /*Si en la ruta determinase item/:item aca sería req.params.item */
     const item = await getOneItem(id);
-    console.log(item);
 
     res.render(path.resolve(__dirname, "../views/shop/item"), {
       title: "Funkoshop Colecciones",
