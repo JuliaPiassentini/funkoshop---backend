@@ -50,8 +50,24 @@ const getItemsSameLicence = async (params) => {
   }
 };
 
+const createOneItem = async (params) => {
+  try {
+    const [product] = await conn.query("INSERT INTO product (product_name,product_description,price,stock,discount,sku,dues,image_front,image_back,licence_id,category_id) VALUES ?;", [params]);
+    return product;
+  } catch (e) {
+    const error = {
+      isError: true,
+      message: `No se pudo obtener la información solicitada debido a  ${e}`,
+    };
+    return error;
+  } finally {
+    await conn.releaseConnection();
+  }
+};
+
 module.exports = {
   getAll,
   getOne,
   getItemsSameLicence,
+  createOneItem
 };

@@ -2,8 +2,8 @@ const path = require("path");
 const {
   getAllItems,
   getOneItem,
-  getAllItemsRel,
-} = require("../services/itemsServices");
+  } = require("../services/itemsServices");
+const {createOneItem } = require('../models/items');
 
 /*Creo y exporto controladores*/
 module.exports = {
@@ -23,11 +23,33 @@ module.exports = {
     });
   },
 
-  createItem: (req, res) => res.send("Ruta que a creado un nuevo Item"),
+  createItem: async (req, res) => {
+    /*console.log(req.body);
+    console.log(req.files);*/
+    const product_schema = {
+      product_name : req.body.name,
+      product_description : req.body.description,      
+      price: Number(req.body.price ),
+      stock:Number( req.body.stock),
+      discount: Number(req.body.discount),
+      sku: req.body.sku,
+      dues:Number( req.body.dues),     
+      image_front:'/products/'+ req.files[0].filename,
+      image_back: '/products/'+req.files[1].filename,
+      licence_id: Number( req.body.licence),
+      category_id: Number( req.body.category),      
+    }
+    /*Utilizamos el squema anterior para crear un array que pasaremos como [params] en la consulta*/
+    await createOneItem([Object.values(product_schema)]);
+    res.redirect('/admin');
+    /*const result = await createOneItem([Object.values(product_schema)]);
+    console.log("array:", ([Object.values(product_schema)]));
+    console.log(result);
+    res.send("Ruta que a creado un nuevo Item"+ result);
     /*const item = req.body;
     await itemsServices.create(item);*/
     /*res.redirect("/admin");*/
-   
+  },
   
 
 
