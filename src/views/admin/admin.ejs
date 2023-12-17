@@ -53,12 +53,21 @@
                     alt="icono de lapiz"
                   />
                 </a>
-                <a class="table__icon" href="../admin/edit.html">
+                <form action="admin/delete/<%= product.product_id %>?_method=DELETE" method="post" enctype="application/x-www-form-urlencoded">
+                  <button class="table__icon" style="background-color: transparent;border: none;" type="submit" >
+                    <img 
+                    src="../../img/icons/delete_trash.svg"
+                    alt="icono de tacho basura"
+                  />
+                  </button>
+                </form>
+          <!--      <a class="table__icon" href="../admin/edit.html">
                   <img
                     src="../../img/icons/delete_trash.svg"
                     alt="icono de tacho basura"
                   />
                 </a>
+                -->
               </div>
             </td>
           </tr>

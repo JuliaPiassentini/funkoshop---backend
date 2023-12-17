@@ -65,9 +65,25 @@ const createOneItem = async (params) => {
   }
 };
 
+const deleteOneItem = async (params) => {
+  try {
+    const [product] = await conn.query("DELETE FROM product WHERE ?;", params);
+    return product;
+  } catch (e) {
+    const error = {
+      isError: true,
+      message: `No se pudo obtener la información solicitada debido a  ${e}`,
+    };
+    return error;
+  } finally {
+    await conn.releaseConnection();
+  }
+};
+
 module.exports = {
   getAll,
   getOne,
   getItemsSameLicence,
-  createOneItem
+  createOneItem,
+  deleteOneItem
 };

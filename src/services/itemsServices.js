@@ -1,4 +1,4 @@
-const { getAll,getOne,getItemsSameLicence } = require('../models/items');
+const { getAll,getOne,getItemsSameLicence } = require('../models/itemsModel');
 
 const getAllItems = async (params) =>{
     const result = await getAll();

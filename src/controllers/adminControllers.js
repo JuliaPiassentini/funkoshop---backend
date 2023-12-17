@@ -3,7 +3,7 @@ const {
   getAllItems,
   getOneItem,
   } = require("../services/itemsServices");
-const {createOneItem } = require('../models/items');
+const {createOneItem,deleteOneItem } = require('../models/itemsModel');
 
 /*Creo y exporto controladores*/
 module.exports = {
@@ -34,8 +34,8 @@ module.exports = {
       discount: Number(req.body.discount),
       sku: req.body.sku,
       dues:Number( req.body.dues),     
-      image_front:'/products/'+ req.files[0].filename,
-      image_back: '/products/'+req.files[1].filename,
+      image_front:'/img/products/'+ req.files[0].filename,
+      image_back: '/img/products/'+req.files[1].filename,
       licence_id: Number( req.body.licence),
       category_id: Number( req.body.category),      
     }
@@ -66,6 +66,14 @@ module.exports = {
       
     });
   },
+
   editItem: (req, res) => res.send("Ruta para modificar un  Item específico"),
-  deleteItem: (req, res) => res.send("Ruta para eliminar un Item específico"),
+
+
+  deleteItem: async (req, res) => {
+    const { id } = req.params;
+    await deleteOneItem({product_id : id});
+
+    res.redirect('/admin');
+  },
 };
