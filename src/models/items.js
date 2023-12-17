@@ -38,7 +38,6 @@ const getOne = async (params) => {
 const getItemsSameLicence = async (params) => {
   try {
     const [rows] = await conn.query("SELECT * FROM product WHERE ?;", params);
-    /*console.log(rows)*/
     return rows;
   } catch (e) {
     const error = {

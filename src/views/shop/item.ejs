@@ -30,7 +30,7 @@
           />
         </picture>
         <article class="item__info">
-          <p class="item__licence"><%= item.licence_name %></p>
+          <p class="item__licence" style="text-transform: uppercase;" ><%= item.licence_name %></p>
           <h2 class="item__name"><%= item.product_name %></h2>
           <p class="item__description">
             <%= item.licence_description %>
@@ -84,7 +84,7 @@
                       />
                       <img
                         class="card-item__img--back"
-                        src="./../../img/star-wars/trooper-box.webp"
+                        src="<%= product.image_back %>"
                         alt="Figura coleccionable <%= product.image_back %>en caja"
                       />
                     </picture>

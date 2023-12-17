@@ -9,7 +9,7 @@ const getOneItem = async (id) =>{
     return result;
 };
 const getAllItemsRel= async (idLicence) =>{
-    const result = await getItemsSameLicence({licence_id : idLicence});
+    const result = await getItemsSameLicence({licence_id : idLicence});/*Ojeto clave valor que sera reemplazado por params para ser utilizado con el where en la consulta ,así la query a base de datos no queda atada a un solo filtro */
     return result;
 };
 

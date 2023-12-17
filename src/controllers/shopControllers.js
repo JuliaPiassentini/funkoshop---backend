@@ -35,6 +35,7 @@ module.exports = {
   },*/
 
   shopItem: async (req, res) => {
+    
     const { id } =
       req.params; /*Si en la ruta determinase item/:item aca sería req.params.item */
     const [item] = await getOneItem(id);
@@ -50,6 +51,8 @@ module.exports = {
       productsRel,
     });
   },
+
+
   agregarItemCarrito: (req, res) =>
     res.send("Ruta para agregar el item seleccionado al carrito"),
   vistaCarrito: (req, res) => {

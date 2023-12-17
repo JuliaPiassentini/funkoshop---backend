@@ -22,26 +22,26 @@ module.exports = {
       view: "admin",
     });
   },
-  createItem: async (req, res) => {
-    const item = req.body;
-    await itemsServices.create(item);
-    res.redirect("/admin");
-  },
+
+  createItem: (req, res) => res.send("Ruta que a creado un nuevo Item"),
+    /*const item = req.body;
+    await itemsServices.create(item);*/
+    /*res.redirect("/admin");*/
+   
+  
+
+
 
   editItemView: async (req, res) => {
     const { id } = req.params;
     const [product] = await getOneItem(id);
-    /*console.log(product.product_id);
-    console.log(product.licence_id);
-    const idLicence = product.licence_id;
-    const productsRel = await getAllItemsRel(idLicence);
-    console.log(productsRel)*/
+    
 
     res.render(path.resolve(__dirname, "../views/admin/edit"), {
       title: "Funkoshop Editar tienda",
       view: "admin",
       product,
-      /*productsRel*/
+      
     });
   },
   editItem: (req, res) => res.send("Ruta para modificar un  Item específico"),
