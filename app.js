@@ -2,8 +2,10 @@ const express = require("express"); /*Requerimos una instancia express con su co
 const app = express(); /*Instacia express ejecutada que monta un server */
 const path = require("path");
 const methodOverride = require("method-override");
+const {initSession} = require('./src/utils/session.js');
 const dotEnv = require("dotenv");
 dotEnv.config();
+
 
 /*Importamos archivos de rutas*/
 const mainRoutes = require("./src/routes/mainRoutes.js");
@@ -22,10 +24,21 @@ app.set("views", path.join(__dirname, "./src/views"));
 
 /*Middleware para determinar carpeta de archivos estáticos*/
 app.use(express.static("public"));
+
+/*Creamos sesion del usuario*/
+app.use (initSession());
+
+
+
 /*Middleware para parsear los datos que vienen del front */
 app.use(express.urlencoded());/*Parsea los datos recibidos por POST */
 app.use(express.json());
 app.use(methodOverride("_method"));
+
+
+
+
+
 
 /*Middlewares para que ante cada petición mi servidor revise estos archivos de rutas que tienen asociados controladores con ciertas respuestas*/
 app.use("/", mainRoutes);
