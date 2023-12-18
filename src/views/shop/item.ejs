@@ -67,14 +67,14 @@
     
       </section>
      
-      <section class="slider glide container">
+      <section class="slider container glide">
         <h2 class="slider__title">PRODUCTOS RELACIONADOS</h2>
         <div class="glide__track" data-glide-el="track">
           <ul class="glide__slides">
             <% productsRel.forEach( product => { %>
               <li class="glide__slide">
                 <article class="card-item">
-                  <a class="card-item__link" href="">
+                  <a class="card-item__link" href="<%= product.product_id %>">
                     <picture class="card-item__cover">
                       <span class="card-item__tag">Nuevo</span>
                       <img
@@ -90,7 +90,7 @@
                     </picture>
                     <div class="card-item__content">
                       <p class="card-item__licence" style="text-transform: uppercase;"><%= item.licence_name %></p>
-                      <h4 class="card-item__name"><%= product.product_name %></h4>
+                      <p class="card-item__name"><%= product.product_name %></p>
                       <p class="card-item__price">$ <%= product.price %></p>
                       <p class="card-item__promo">3 CUOTAS SIN INTERÉS</p>
                     </div>

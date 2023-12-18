@@ -3,7 +3,7 @@ const {
   getAllItems,
   getOneItem,
   } = require("../services/itemsServices");
-const {createOneItem,deleteOneItem } = require('../models/itemsModel');
+const {createOneItem,deleteOneItem,editOneItem } = require('../models/itemsModel');
 
 /*Creo y exporto controladores*/
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
   createItem: async (req, res) => {
     /*console.log(req.body);
     console.log(req.files);*/
-    const product_schema = {
+    const product_schema = {/*Esquema para subir datos a la base de datos clave(utilizada en tabla producto):valor(name correspondiente a cada input del formulario put)*/
       product_name : req.body.name,
       product_description : req.body.description,      
       price: Number(req.body.price ),
@@ -67,7 +67,39 @@ module.exports = {
     });
   },
 
-  editItem: (req, res) => res.send("Ruta para modificar un  Item específico"),
+  editItem: async (req, res) => {
+
+    const { id } = req.params;
+    const haveImages = req.files.length !==0 ;
+
+    const product_schema = haveImages ? {
+      product_name : req.body.name,
+      product_description : req.body.description,      
+      price: Number(req.body.price ),
+      stock:Number( req.body.stock),
+      discount: Number(req.body.discount),
+      sku: req.body.sku,
+      dues:Number( req.body.dues),     
+      image_front:'/img/products/'+ req.files[0].filename,
+      image_back: '/img/products/'+req.files[1].filename,
+      licence_id: Number( req.body.licence),
+      category_id: Number( req.body.category),      
+    }:{
+      product_name : req.body.name,
+      product_description : req.body.description,      
+      price: Number(req.body.price ),
+      stock:Number( req.body.stock),
+      discount: Number(req.body.discount),
+      sku: req.body.sku,
+      dues:Number( req.body.dues),     
+      licence_id: Number( req.body.licence),
+      category_id: Number( req.body.category),
+    }; 
+
+    await editOneItem(product_schema, {product_id : id});
+
+    res.redirect('/shop');
+  },
 
 
   deleteItem: async (req, res) => {

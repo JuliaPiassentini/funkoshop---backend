@@ -65,6 +65,21 @@ const createOneItem = async (params) => {
   }
 };
 
+const editOneItem = async (params, id) => {
+  try {
+    const [product] = await conn.query('UPDATE product SET ? WHERE ?;', [params, id]);
+    return product;
+  } catch (e) {
+    const error = {
+      isError: true,
+      message: `No se pudo obtener la información solicitada debido a  ${e}`,
+    };
+    return error;
+  } finally {
+    await conn.releaseConnection();
+  }
+};
+
 const deleteOneItem = async (params) => {
   try {
     const [product] = await conn.query("DELETE FROM product WHERE ?;", params);
@@ -85,5 +100,6 @@ module.exports = {
   getOne,
   getItemsSameLicence,
   createOneItem,
+  editOneItem,
   deleteOneItem
 };
